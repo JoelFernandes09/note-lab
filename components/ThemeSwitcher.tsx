@@ -55,7 +55,7 @@ export const ThemeSwitcher: FC<ThemeSwitchProps> = ({ className, classNames }) =
           ),
         })}
       >
-        {!isSelected || isSSR ? <MdLightMode size={22} /> : <MdDarkMode size={22} />}
+        {!isSelected || isSSR ? <MdLightMode color={'primary'} size={22} /> : <MdDarkMode color={'primary'} size={22} />}
       </div>
     </Component>
   );
