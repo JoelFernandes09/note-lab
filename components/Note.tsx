@@ -1,54 +1,47 @@
 'use client';
 
 import {
-  addToast,
   Button,
   useDisclosure,
   Card,
   CardBody,
+  CardFooter,
   Textarea,
   Modal,
   ModalContent,
   ModalHeader,
 } from '@heroui/react';
-import { IoAdd } from 'react-icons/io5';
+import { MdDelete } from 'react-icons/md';
 import { useState } from 'react';
 
-import { saveNote } from '@/lib/notes';
+import { deleteNote, editNote } from '@/lib/notes';
 
-const NoteCreator = () => {
+const Note = ({ id, content }: { id: string; content: string }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [noteContent, setNoteContent] = useState<string>('');
 
-  const createNote = async () => {
-    if (noteContent.length < 1)
-      return addToast({
-        title: 'Error',
-        description: 'Cannot save an empty note',
-        color: 'danger',
-        classNames: { base: 'pencil-border' },
-      });
-
-    saveNote(noteContent);
-
-    addToast({
-      title: 'Success',
-      description: 'Note saved successfully!',
-      color: 'success',
-      classNames: { base: 'pencil-border' },
-    });
-    setNoteContent('');
-  };
-
   return (
     <>
-      <Button
-        className={'text-black pencil-border h-full'}
-        color={'primary'}
-        endContent={<IoAdd className={'outline-none'} size={20} />}
-        variant={'solid'}
-        onPress={onOpen}
-      />
+      <Card className='w-60 h-80 text-center' shadow={'none'}>
+        <CardBody
+          onClick={() => {
+            setNoteContent(content);
+            onOpen();
+            console.log('Card Clicked!');
+          }}
+        >
+          <div className={'flex flex-col gap-6 w-full text-center'}>{content}</div>
+        </CardBody>
+        <CardFooter>
+          <div className={'flex justify-end w-full'}>
+            <MdDelete
+              onClick={() => {
+                deleteNote(id);
+              }}
+            />
+          </div>
+        </CardFooter>
+      </Card>
       <Modal className={'pencil-border'} isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -82,7 +75,7 @@ const NoteCreator = () => {
                         variant={'solid'}
                         onPress={() => {
                           onClose();
-                          createNote();
+                          editNote(id, noteContent);
                         }}
                       >
                         Save
@@ -99,4 +92,4 @@ const NoteCreator = () => {
   );
 };
 
-export default NoteCreator;
+export default Note;

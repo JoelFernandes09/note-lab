@@ -30,8 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning lang='en'>
       <head />
       <body className={clsx('min-h-screen notepad-background font-sans antialiased', fontKalam.className)}>
-        <div className={'h-screen w-screen bg-yellow-500/30'}>
-          <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>{children}</Providers>
+        <div className={''}>
+          <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>{children}</Providers>
         </div>
       </body>
     </html>

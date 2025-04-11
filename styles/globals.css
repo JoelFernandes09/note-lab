@@ -3,15 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: black; /* Light Theme Primary */
-}
-
-.dark {
-  --color-primary: white; /* Dark Theme Primary */
+  --color-primary: white; /* Light Theme Primary */
 }
 
 .notepad-background {
-  background-color: #f8f9fa; /* Light background */
+  background-color: #f4e4b1; /* Light background */
   background-image: 
     linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);

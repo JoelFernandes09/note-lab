@@ -1,14 +1,16 @@
 import { Divider } from '@heroui/react';
 
 import Header from '@/components/Header';
-import NoteCreator from '@/components/NoteCreator';
+import NotesDisplay from '@/components/NotesDisplay';
 
-export default function Home() {
+const Home = async () => {
   return (
     <section className='flex flex-col items-center gap-4 py-8 md:py-10'>
       <Header />
-      <Divider className={'pencil-border w-full mt-8 mb-12'} />
-      <NoteCreator />
+      <Divider className={'pencil-border w-full mt-4 mb-12'} />
+      <NotesDisplay />
     </section>
   );
-}
+};
+
+export default Home;

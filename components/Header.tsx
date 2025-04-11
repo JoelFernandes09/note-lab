@@ -1,10 +1,10 @@
 'use client';
-import { CgNotes } from 'react-icons/cg';
 import { FaSearch } from 'react-icons/fa';
 import { CiImport, CiExport } from 'react-icons/ci';
 import { Button, ButtonGroup, Input } from '@heroui/react';
 
-import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import NoteCreator from './NoteCreator';
+
 import { fontKalam } from '@/config/fonts';
 
 const Header = () => {
@@ -16,45 +16,42 @@ const Header = () => {
     <>
       <div className={'flex justify-between w-full px-8 md:px-10'}>
         <div className={'flex items-center'}>
-          <CgNotes size={40} /> <span className={`font-bold text-4xl ${fontKalam.className}`}>NoteLab</span>
+          <p className={`font-bold text-4xl ${fontKalam.className}`}>notelab.</p>
         </div>
 
-        <div className={'flex w-1/2'}>
+        <div className={'flex items-center w-1/2'}>
+          <NoteCreator />
           <Input
-            color={'primary'}
+            className={'pencil-border'}
             name={'search'}
             placeholder='Search Notes'
+            radius={'none'}
             size={'md'}
             startContent={<FaSearch />}
             type='text'
-            variant={'underlined'}
             onValueChange={onSearchValueChange}
-            className={'pencil-border'}
           />
         </div>
 
         <div className={'flex items-center gap-4'}>
           <ButtonGroup>
             <Button
-              className={'hover:bg-primary dark:hover:text-black hover:text-white pencil-border'}
+              className={'text-black pencil-border'}
               color={'primary'}
-              endContent={<CiImport size={20} />}
-              variant={'bordered'}
+              endContent={<CiImport className={'outline-none'} size={20} />}
+              variant={'solid'}
             >
               Import
             </Button>
             <Button
-              className={'hover:bg-primary dark:hover:text-black hover:text-white pencil-border'}
+              className={'text-black pencil-border'}
               color={'primary'}
-              endContent={<CiExport size={20} />}
-              variant={'bordered'}
+              endContent={<CiExport className={'outline-none'} size={20} />}
+              variant={'solid'}
             >
               Export
             </Button>
           </ButtonGroup>
-          {/* <div>
-            <ThemeSwitcher />
-          </div> */}
         </div>
       </div>
     </>
