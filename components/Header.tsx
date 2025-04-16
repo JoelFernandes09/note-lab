@@ -1,20 +1,75 @@
 'use client';
 import { FaSearch } from 'react-icons/fa';
 import { CiImport, CiExport } from 'react-icons/ci';
-import { Button, ButtonGroup, Input } from '@heroui/react';
-import { useState, useEffect } from 'react';
+import { Button, ButtonGroup, Input, addToast } from '@heroui/react';
+import { useState, useEffect, useRef } from 'react';
 
 import NoteCreator from './NoteCreator';
 
 import { fontKalam } from '@/config/fonts';
-import { setNoteFilter } from '@/lib/notes';
+import { areNotesValid, exportNotes, importNotes, setNoteFilter } from '@/lib/notes';
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setNoteFilter(searchValue);
   }, [searchValue]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const jsonData = JSON.parse(text);
+
+      if (jsonData.length < 1) {
+        addToast({
+          title: 'Error',
+          description: 'Could not find notes!',
+          color: 'danger',
+          classNames: { base: 'pencil-border' },
+        });
+
+        return;
+      }
+
+      if (!areNotesValid(jsonData)) {
+        addToast({
+          title: 'Error',
+          description: 'Invalid Notes',
+          color: 'danger',
+          classNames: { base: 'pencil-border' },
+        });
+
+        return;
+      }
+
+      importNotes(jsonData);
+      addToast({
+        title: 'Success',
+        description: 'Successfully restored notes!',
+        color: 'success',
+        classNames: { base: 'pencil-border' },
+      });
+
+    } catch (e) {
+      console.log(`Invalid JSON file uploaded! ${e}`);
+      addToast({
+        title: 'Error',
+        description: 'Invalid JSON File',
+        color: 'danger',
+        classNames: { base: 'pencil-border' },
+      });
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
 
   return (
     <>
@@ -39,12 +94,20 @@ const Header = () => {
         </div>
 
         <div className={'flex items-center gap-4'}>
+          <input
+            ref={fileInputRef}
+            accept='.json'
+            style={{ display: 'none' }}
+            type='file'
+            onChange={handleFileChange}
+          />
           <ButtonGroup>
             <Button
               className={'text-black pencil-border'}
               color={'primary'}
               endContent={<CiImport className={'outline-none'} size={20} />}
               variant={'solid'}
+              onPress={triggerFileInput}
             >
               Import
             </Button>
@@ -53,6 +116,7 @@ const Header = () => {
               color={'primary'}
               endContent={<CiExport className={'outline-none'} size={20} />}
               variant={'solid'}
+              onPress={exportNotes}
             >
               Export
             </Button>

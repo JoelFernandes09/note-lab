@@ -30,6 +30,7 @@ export const deleteNote = (id: string) => {
     if (noteIndex != -1) notes.splice(noteIndex, 1);
 
     localStorage.setItem('notelab-notes', JSON.stringify(notes));
+    localStorage.setItem('notelab-notes-filtered', JSON.stringify(notes));
   }
 
   window.dispatchEvent(new Event('storage'));
@@ -51,6 +52,7 @@ export const editNote = (id: string, content: string) => {
     }
 
     localStorage.setItem('notelab-notes', JSON.stringify(notes));
+    localStorage.setItem('notelab-notes-filtered', JSON.stringify(notes));
   }
 
   window.dispatchEvent(new Event('storage'));
@@ -66,4 +68,41 @@ export const setNoteFilter = (searchParams: string) => {
     if (filteredNotes.length > 0) localStorage.setItem('notelab-notes-filtered', JSON.stringify(filteredNotes));
     window.dispatchEvent(new Event('storage'));
   }
+};
+
+export const exportNotes = () => {
+  const storedNotes = localStorage.getItem('notelab-notes');
+
+  if (storedNotes) {
+    const blob = new Blob([storedNotes], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = 'notelab-notes.json';
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+};
+
+export const areNotesValid = (notes: INote[]) => {
+  let isValid = true;
+
+  notes.forEach((note) => {
+    if (!note) isValid = false;
+    if (!note.id) isValid = false;
+    if (!note.content) isValid = false;
+  });
+
+  return isValid;
+};
+
+export const importNotes = (notes: INote[]) => {
+  localStorage.setItem('notelab-notes', JSON.stringify(notes));
+  localStorage.setItem('notelab-notes-filtered', JSON.stringify(notes));
+  window.dispatchEvent(new Event('storage'));
 };
