@@ -3,6 +3,8 @@
 A sleek, local-first note-taking web app built using **Next.js**, **TailwindCSS**, and **HeroUI**.  
 Easily create, view, delete, import, and export notes — all stored locally in your browser!
 
+Check out the live version [here](https://notelab.joelfernandes.co.in)!
+
 ---
 
 ## 📦 Project Structure
