@@ -1,53 +1,84 @@
-# Next.js & HeroUI Template
+# 📚 Note Labs
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+A sleek, local-first note-taking web app built using **Next.js**, **TailwindCSS**, and **HeroUI**.  
+Easily create, view, delete, import, and export notes — all stored locally in your browser!
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+---
 
-## Technologies Used
+## 📦 Project Structure
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+| Path | Description |
+|------|-------------|
+| `.eslintignore`, `.eslintrc.json` | ESLint configuration for code quality |
+| `.gitignore` | Files to exclude from Git tracking |
+| `.npmrc` | Custom npm settings |
+| `next.config.js` | Next.js app configuration |
+| `package.json` | Project dependencies and scripts |
+| `postcss.config.js`, `tailwind.config.js` | TailwindCSS setup |
+| `tsconfig.json` | TypeScript configuration |
+| `.vscode/settings.json` | Editor config (VSCode specific) |
+| `app/layout.tsx` | Root layout shared across pages |
+| `app/page.tsx` | Main page rendering the entire app |
+| `app/providers.tsx` | Wrapper for context/theme providers |
+| `components/Header.tsx` | Top navigation and branding |
+| `components/Note.tsx` | UI for individual note cards |
+| `components/NoteCreator.tsx` | Interface for adding new notes |
+| `components/NotesDisplay.tsx` | Renders list of all saved notes |
 
-## How to Use
+---
 
-### Use the template with create-next-app
+## 🚀 Getting Started
 
-To create a new project based on this template using `create-next-app`, run the following command:
-
+### 1. Clone the Repository
 ```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
+git clone https://github.com/JoelFernandes09/note-lab.git
+cd note-lab
 ```
 
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Run the development server
-
+### 3. Run the Development Server
 ```bash
 npm run dev
 ```
 
-### Setup pnpm (optional)
+Visit **[http://localhost:3000](http://localhost:3000)** to view the app in your browser.
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+---
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+## ✨ Features
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+- 📝 Create, edit, and delete notes
+- 💾 Persistent storage with **localStorage**
+- 📥 Import notes from a JSON file
+- 📤 Export all notes to JSON
+- ⚡ Fast & responsive
 
-## License
+---
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+## 🛠 Upcoming Features
+
+- 🏷 **Labels** — Tag your notes for better organization  
+- 🔍 **Filtering with Labels** — Quickly filter notes by selected tags  
+- 🔐 **Supabase Auth** — Secure login and user sessions  
+- ☁️ **Supabase Storage** — Sync notes across devices
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!  
+If you find any bugs or want to suggest new features, feel free to [open an issue](https://github.com/JoelFernandes09/note-lab/issues).
+
+---
+
+## 📄 License
+
+Licensed under the **MIT License** — free to use, modify, and distribute.
+
+---
+
+> Built with 💙 by [Joel Fernandes](https://github.com/JoelFernandes09)
