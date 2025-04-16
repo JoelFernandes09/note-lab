@@ -1,8 +1,9 @@
 'use client';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaGithub } from 'react-icons/fa';
 import { CiImport, CiExport } from 'react-icons/ci';
 import { Button, ButtonGroup, Input, addToast } from '@heroui/react';
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 import NoteCreator from './NoteCreator';
 
@@ -55,7 +56,6 @@ const Header = () => {
         color: 'success',
         classNames: { base: 'pencil-border' },
       });
-
     } catch (e) {
       console.log(`Invalid JSON file uploaded! ${e}`);
       addToast({
@@ -121,6 +121,9 @@ const Header = () => {
               Export
             </Button>
           </ButtonGroup>
+          <Link href={'https://github.com/JoelFernandes09/note-lab'} target={'_blank'}>
+            <FaGithub size={25} />
+          </Link>
         </div>
       </div>
     </>
