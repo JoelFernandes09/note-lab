@@ -8,8 +8,7 @@
 
 .notepad-background {
   background-color: #f4e4b1; /* Light background */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 20px 20px; /* Adjust size of squares */
 }
@@ -17,8 +16,8 @@
 .pencil-border {
   border: 2px solid rgb(43, 43, 43);
   border-radius: 4px;
-  box-shadow: 
-    1px 1px 0px rgb(43, 43, 43), 
-    2px 2px 0px rgb(43, 43, 43), 
+  box-shadow:
+    1px 1px 0px rgb(43, 43, 43),
+    2px 2px 0px rgb(43, 43, 43),
     3px 3px 1px rgba(0, 0, 0, 0.3); /* Slight smudging effect */
 }
