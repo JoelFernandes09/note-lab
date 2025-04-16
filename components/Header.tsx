@@ -2,15 +2,19 @@
 import { FaSearch } from 'react-icons/fa';
 import { CiImport, CiExport } from 'react-icons/ci';
 import { Button, ButtonGroup, Input } from '@heroui/react';
+import { useState, useEffect } from 'react';
 
 import NoteCreator from './NoteCreator';
 
 import { fontKalam } from '@/config/fonts';
+import { setNoteFilter } from '@/lib/notes';
 
 const Header = () => {
-  const onSearchValueChange = (value: string) => {
-    console.log(value);
-  };
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    setNoteFilter(searchValue);
+  }, [searchValue]);
 
   return (
     <>
@@ -29,7 +33,8 @@ const Header = () => {
             size={'md'}
             startContent={<FaSearch />}
             type='text'
-            onValueChange={onSearchValueChange}
+            value={searchValue}
+            onValueChange={setSearchValue}
           />
         </div>
 

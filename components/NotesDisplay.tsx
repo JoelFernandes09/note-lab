@@ -12,8 +12,12 @@ const NotesDisplay = () => {
   useEffect(() => {
     const updateNotes = () => {
       const notes = localStorage.getItem('notelab-notes');
+      const filteredNotes = localStorage.getItem('notelab-notes-filtered');
 
-      if (notes) setExistingNotes(JSON.parse(notes));
+      if (filteredNotes && JSON.parse(filteredNotes).length > 0) setExistingNotes(JSON.parse(filteredNotes));
+      else {
+        if (notes) setExistingNotes(JSON.parse(notes));
+      }
     };
 
     updateNotes();
