@@ -6,6 +6,7 @@ import { Providers } from './providers';
 
 import { siteConfig } from '@/config/site';
 import { fontKalam } from '@/config/fonts';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +29,19 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang='en'>
-      <head />
+      <head>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=G-WE24G2HMTC`} strategy='afterInteractive' />
+        <Script id='ga-script' strategy='afterInteractive'>
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WE24G2HMTC', {
+                page_path: window.location.pathname,
+              });
+          `}
+        </Script>
+      </head>
       <body className={clsx('min-h-screen notepad-background font-sans antialiased', fontKalam.className)}>
         <div className={''}>
           <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>{children}</Providers>
