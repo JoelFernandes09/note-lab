@@ -43,7 +43,7 @@ const NoteCreator = () => {
   return (
     <>
       <Button
-        className={'text-black pencil-border h-full'}
+        className={'text-black pencil-border w-full h-10 md:h-full md:w-24'}
         color={'primary'}
         endContent={<IoAdd className={'outline-none'} size={20} />}
         variant={'solid'}

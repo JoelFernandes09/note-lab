@@ -73,12 +73,12 @@ const Header = () => {
 
   return (
     <>
-      <div className={'flex justify-between w-full px-8 md:px-10'}>
+      <div className={'flex flex-col items-center justify-between w-full px-8 md:flex-row md:items-stretch'}>
         <div className={'flex items-center'}>
           <p className={`font-bold text-4xl ${fontKalam.className}`}>notelab.</p>
         </div>
 
-        <div className={'flex items-center w-1/2'}>
+        <div className={'flex flex-col-reverse items-center w-full md:flex-row md:w-1/2'}>
           <NoteCreator />
           <Input
             className={'pencil-border'}
@@ -93,7 +93,7 @@ const Header = () => {
           />
         </div>
 
-        <div className={'flex items-center gap-4'}>
+        <div className={'mt-4 md:flex md:items-center md:gap-4 md:mt-0'}>
           <input
             ref={fileInputRef}
             accept='.json'
@@ -109,7 +109,7 @@ const Header = () => {
               variant={'solid'}
               onPress={triggerFileInput}
             >
-              Import
+              <span className={'md:hidden lg:block'}>Import</span>
             </Button>
             <Button
               className={'text-black pencil-border'}
@@ -118,10 +118,10 @@ const Header = () => {
               variant={'solid'}
               onPress={exportNotes}
             >
-              Export
+              <span className={'md:hidden lg:block'}>Export</span>
             </Button>
           </ButtonGroup>
-          <Link href={'https://github.com/JoelFernandes09/note-lab'} target={'_blank'}>
+          <Link className={'hidden md:block'} href={'https://github.com/JoelFernandes09/note-lab'} target={'_blank'}>
             <FaGithub size={25} />
           </Link>
         </div>
