@@ -82,6 +82,7 @@ const Header = () => {
           <NoteCreator />
           <Input
             className={'pencil-border'}
+            id={'search-notes-input'}
             name={'search'}
             placeholder='Search Notes'
             radius={'none'}
@@ -101,7 +102,7 @@ const Header = () => {
             type='file'
             onChange={handleFileChange}
           />
-          <ButtonGroup>
+          <ButtonGroup id={'notes-import-export'}>
             <Button
               className={'text-black pencil-border'}
               color={'primary'}
@@ -121,7 +122,12 @@ const Header = () => {
               <span className={'md:hidden lg:block'}>Export</span>
             </Button>
           </ButtonGroup>
-          <Link className={'hidden md:block'} href={'https://github.com/JoelFernandes09/note-lab'} target={'_blank'}>
+          <Link
+            className={'hidden md:block'}
+            href={'https://github.com/JoelFernandes09/note-lab'}
+            id={'github-button'}
+            target={'_blank'}
+          >
             <FaGithub size={25} />
           </Link>
         </div>

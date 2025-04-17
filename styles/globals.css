@@ -14,10 +14,10 @@
 }
 
 .pencil-border {
-  border: 2px solid rgb(43, 43, 43);
-  border-radius: 4px;
+  border: 2px solid rgb(43, 43, 43) !important;
+  border-radius: 4px !important;
   box-shadow:
     1px 1px 0px rgb(43, 43, 43),
     2px 2px 0px rgb(43, 43, 43),
-    3px 3px 1px rgba(0, 0, 0, 0.3); /* Slight smudging effect */
+    3px 3px 1px rgba(0, 0, 0, 0.3) !important; /* Slight smudging effect */
 }
